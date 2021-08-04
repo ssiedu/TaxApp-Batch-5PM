@@ -32,11 +32,22 @@ public class TaxProcessor extends HttpServlet {
 		out.println("<h3>Your Tax Details</h3>");
 		out.println("<h4>Thanks For Visiting Us..<h4>");
 		out.println("<hr>");
-		out.println("Your Tax Amount : "+tax);
+		out.println("<table border=1>");
+		out.println("<tr>");
+		out.println("<td>Income</td>");
+		out.println("<td>"+income+"</td>");
+		out.println("</tr>");
+		out.println("<tr>");
+		out.println("<td>Tax</td>");
+		out.println("<td>"+tax+"</td>");
+		out.println("</tr>");
+		out.println("</table>");
 		out.println("<hr>");
 		out.println("<marquee>Pay Your Taxes On Time..</marquee>");
 		out.println("</body>");
 		out.println("</html>");
+		
+		out.close();
 	}
 
 }
