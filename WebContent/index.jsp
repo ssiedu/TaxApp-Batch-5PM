@@ -2,10 +2,13 @@
 <body>
 	<h3>Income Tax Dept</h3>
 	<hr>
+		<form action="VerifyUser">
+			Email	<input type="text" name="email"/>
+			Password <input type="password" name="password"/>
+			<input type="submit" value="Login"/>
+		</form>
+	<hr>
 		<a href="registration.jsp">New-User-Registration</a><br>
-		<a href="details.jsp">Tax-Calculator</a><br>
-		<a href="TaxRateServlet">Get-Tax-Rate-Chart</a><br>
-		<a href="InfoServlet">Get-Information-In-PDF</a><br>
 	<hr>
 </body>
 </html>

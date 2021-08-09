@@ -18,7 +18,29 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
-
+	private Connection con;
+	private PreparedStatement ps;
+	
+	//while loading
+	public void init() {
+		String sql="INSERT INTO users VALUES(?,?,?,?,?)";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/data5","root","root");
+			ps=con.prepareStatement(sql);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//while unloading
+	public void destroy() {
+		try {
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
 		
@@ -38,21 +60,17 @@ public class RegistrationServlet extends HttpServlet {
 		}
 		String hobby=sj.toString();
 		//process the request
-		String sql="INSERT INTO users VALUES(?,?,?,?,?)";
+		
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<hr>");
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/data5","root","root");
-			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
 			ps.setString(3, hobby);
 			ps.setString(4, city);
 			ps.setString(5, gn);
 			ps.executeUpdate();
-			con.close();
 			out.println("<h3>Registered Successfully</h3>");
 			out.println("<h4><a href=index.jsp>Login</a></h4>");
 		}catch(Exception e) {
