@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,7 +56,10 @@ public class VerifyUser extends HttpServlet {
 			boolean b=rs.next();	
 			if(b==true) {
 				//valid
-				out.println("welcome user");
+				response.sendRedirect("dashboard.jsp");
+				//RequestDispatcher rd=request.getRequestDispatcher("dashboard.jsp");
+				//rd.forward(request, response);
+				
 			}else {
 				//invalid
 				out.println("invalid user details");

@@ -6,7 +6,7 @@
 		<a href="details.jsp">Tax-Calculator</a><br>
 		<a href="TaxRateServlet">Get-Tax-Rate-Chart</a><br>
 		<a href="InfoServlet">Get-Information-In-PDF</a><br>
-		<a href="">Logout</a>
+		<a href="index.jsp">Logout</a>
 	<hr>
 </body>
 </html>
